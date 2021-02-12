@@ -1,6 +1,8 @@
 let conversionRates = {};
 let currency1 = "INR";
 let currency2 = "USD";
+let lastUpdatedDate;
+let flag = 0;
 
 //Fetching Conversion rates data from API
 
@@ -16,7 +18,11 @@ fetch("https://api.exchangeratesapi.io/latest").then(
       
         resObj.json().then(
 
-            data => { Object.assign(conversionRates, data.rates); }
+            data => {
+                Object.assign(conversionRates, data.rates);
+                lastUpdatedDate = data.date;
+                console.log(data);
+            }
         )
             
             
@@ -37,14 +43,16 @@ Each value in the object is the value of 1 EUR in the respective country's curre
 */
 console.log(conversionRates);
 
-convert = (id) => {
+convert = (id) => {                                             // the id from which user has given input
     
     
-    let fromCurrencyValue = +document.getElementById(id).value;
-    let fromCurrency;
+    let fromCurrencyValue = +document.getElementById(id).value;  //input value from user
+    let fromCurrency;                                            
     let toCurrency;
-    let targetId;
+    let targetId;                                               //The id in which result has to be printed
     console.log(fromCurrencyValue);
+    
+    //Assigning fromCurrency and toCurrency based on id
 
     if (id == "currency1")
     {
@@ -62,14 +70,60 @@ convert = (id) => {
         console.log("from :", fromCurrency, "to: ", toCurrency);
 
     }
+
+    //Changing the lastUpdatedDate format
+    flag++;
+    if (flag === 1)
+    {
+        let tempDate = lastUpdatedDate.split('-');
+        
+
+        switch (tempDate[1])
+        {
+            case '01': tempDate[1] = 'January';
+                break;
+            case '02': tempDate[1] = 'February';
+                break;
+                
+            case '03': tempDate[1] = 'March';
+                break;
+            case '04': tempDate[1] = 'April';
+                break;
+            case '05': tempDate[1] = 'May';
+                break;
+            case '06': tempDate[1] = 'June';
+                break;
+            case '07': tempDate[1] = 'July';
+                break;
+            case '08': tempDate[1] = 'August';
+                break;
+            case '09': tempDate[1] = 'September';
+                break;
+            case '10': tempDate[1] = 'October';
+                break;
+            case '11': tempDate[1] = 'November';
+                break;
+            case '12': tempDate[1] = 'December';
+                break;
+            
+                
+        }
+
+        lastUpdatedDate = tempDate[1]+ " "+ tempDate[2] + " th " + tempDate[0];
+        console.log(lastUpdatedDate);
+    }  
+    document.getElementById("last-updated-info").innerHTML = "Last Updated On "+ lastUpdatedDate;
     
     let toCurrencyValue = (fromCurrencyValue / conversionRates[fromCurrency]) * conversionRates[toCurrency];
     document.getElementById(targetId).value = toCurrencyValue;
-   
+
+    document.getElementById("input-data").innerHTML = fromCurrencyValue + `  ` + fromCurrency+ "  equals"    ;
+    document.getElementById("output-data").innerHTML =  toCurrencyValue.toFixed(2)+ `  ` + toCurrency  ;
+
 
 }
 
-// 
+
 getCurrency1 = () => {
     
     let selectedFromCurrencyList1 = document.getElementById("currencyList1").value;

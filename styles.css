@@ -1,0 +1,33 @@
+.currencyInputs {
+
+margin-left:5%;
+margin-bottom: 5%;
+
+}
+
+.results{
+
+    margin:5%;
+}
+
+.input-data{
+
+    font-family: 'Roboto';
+    color:grey;
+    font-size: 200%;
+}
+
+.output-data {
+
+    font-family: 'Roboto';
+    font-size: 400%;
+}
+
+.last-updated-info{
+
+    margin-left:0.1%;
+    font-family: 'Roboto';
+    font-style: italic;
+
+}
+
