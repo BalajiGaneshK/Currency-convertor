@@ -7,7 +7,7 @@ let flag = 0;
 
 //Fetching Conversion rates data from API
 
-fetch("/v1").then(
+fetch("/v1/").then(
 
     response => {
         return response;
