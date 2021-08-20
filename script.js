@@ -5,7 +5,7 @@ let lastUpdatedDate;
 let allHistoricData;
 let flag = 0;
 
-//Fetching Conversion rates data from API
+//Fetching Conversion rates data from API...
 
 fetch("/v1/").then(
 
