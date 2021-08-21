@@ -5,9 +5,10 @@ let lastUpdatedDate;
 let allHistoricData;
 let flag = 0;
 
+
 //Fetching Conversion rates data from API...
 
-fetch("/v1/").then(
+fetch('https://api.exchangeratesapi.io/v1/latest?access_key=02d91e97b9cbb8b598c5e284cedeb705').then(
 
     response => {
         return response;
