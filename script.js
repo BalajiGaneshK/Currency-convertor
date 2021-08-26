@@ -4,7 +4,7 @@ let currency2 = "USD";
 let lastUpdatedDate;
 let allHistoricData;
 let flag = 0;
-
+let ACCESS_KEY = '02d91e97b9cbb8b598c5e284cedeb705';
 
 //Fetching Conversion rates data from API...
 
