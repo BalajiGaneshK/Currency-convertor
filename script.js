@@ -8,7 +8,7 @@ let ACCESS_KEY = '02d91e97b9cbb8b598c5e284cedeb705';
 
 //Fetching Conversion rates data from API...
 
-fetch('https://api.exchangeratesapi.io/v1/latest?access_key=02d91e97b9cbb8b598c5e284cedeb705').then(
+fetch('https://bg-forex-api.herokuapp.com/latest').then(
 
     response => {
         return response;
