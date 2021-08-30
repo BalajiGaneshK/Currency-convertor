@@ -21,9 +21,9 @@ fetch('https://bg-forex-api.herokuapp.com/latest').then(
         resObj.json().then(
 
             data => {
-                Object.assign(conversionRates, data.rates);
-                lastUpdatedDate = data.date;
-                //console.log(data);
+                Object.assign(conversionRates, data.forexData[0].rates);
+                lastUpdatedDate = data.forexData[0].date;
+                console.log(data);
             }
         )
             
